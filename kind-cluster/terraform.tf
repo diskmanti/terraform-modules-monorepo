@@ -9,4 +9,6 @@ terraform {
       version = ">= 2.23.1"
     }
   }
+  required_version = "1.9.2"
 }
+
