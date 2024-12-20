@@ -29,7 +29,7 @@ variable "kind_api_version" {
 }
 
 variable "containerd_config_patches" {
-  nullable = true
+  nullable    = true
   type        = list(string)
   description = "Containerd config patches"
   default = [
