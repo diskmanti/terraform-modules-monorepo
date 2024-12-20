@@ -1,22 +1,39 @@
-output "parsed_kubeconfig" {
-  description = "Kubeconfig blocks to configure Terraform providers."
-  value = {
-    host                   = kind_cluster.cluster.endpoint
-    client_certificate     = kind_cluster.cluster.client_certificate
-    client_key             = kind_cluster.cluster.client_key
-    cluster_ca_certificate = kind_cluster.cluster.cluster_ca_certificate
-  }
-  sensitive = true
+output "cluster_name" {
+  value = kind_cluster.cluster.name
 }
 
-output "raw_kubeconfig" {
-  description = "Raw `.kube/config` file for `kubectl` access."
-  value       = kind_cluster.cluster.kubeconfig
-  sensitive   = true
+output "kubeconfig_path" {
+  value = kind_cluster.cluster.kubeconfig_path
 }
 
-output "kind_subnet" {
-  description = "Kind IPv4 Docker network subnet."
-  value       = compact([for x in tolist(data.docker_network.kind.ipam_config[*].subnet) : can(regex(":", x)) ? "" : x]).0
-  # The way we filter out IPv6 subnets is based on this -> https://discuss.hashicorp.com/t/how-to-filter-out-ip4-and-ip6-subnets/22556/5
+output "client_certificate" {
+  value = kind_cluster.cluster.client_certificate
+}
+
+output "client_key" {
+  value = kind_cluster.cluster.client_key
+}
+
+output "cluster_ca_certificate" {
+  value = kind_cluster.cluster.cluster_ca_certificate
+}
+
+output "endpoint" {
+  value = kind_cluster.cluster.endpoint
+}
+
+output "kubeconfig" {
+  value = kind_cluster.cluster.kubeconfig
+}
+
+output "id" {
+  value = kind_cluster.cluster.id
+}
+
+output "kubectl_nodes" {
+  value = "You can use this command to get nodes: kubectl --kubeconfig=${kind_cluster.cluster.kubeconfig_path} get nodes -o wide"
+}
+
+output "kubectl_pods" {
+  value = "You can use this command to get pods: kubectl --kubeconfig=${kind_cluster.cluster.kubeconfig_path} get pods -A"
 }
