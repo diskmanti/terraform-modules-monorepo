@@ -15,6 +15,7 @@ terraform {
       version = ">= 2.16.1"
 
 
+
     }
     kind = {
       source  = "tehcyx/kind"
@@ -27,28 +28,3 @@ terraform {
     }
   }
 }
-
-provider "kind" {
-  # Configuration options for the Kind provider
-}
-
-provider "helm" {
-  # Configuration options for the Helm provider
-  kubernetes {
-    config_path = var.kubeconfig_path
-  }
-}
-
-provider "kubernetes" {
-  # Configuration options for the Kubernetes provider
-}
-
-provider "kubectl" {
-  # Configuration options for the Kubectl provider
-  config_path = var.kubeconfig_path
-}
-
-provider "null" {
-
-}
-
