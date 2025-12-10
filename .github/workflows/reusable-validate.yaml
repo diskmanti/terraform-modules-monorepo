@@ -34,7 +34,7 @@ jobs:
           terraform_version: ${{ inputs.terraformVersion }}
 
       - name: Checkout
-        uses: actions/checkout@v5
+        uses: actions/checkout@v6
 
       - name: Generate token
         env:
