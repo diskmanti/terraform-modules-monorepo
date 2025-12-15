@@ -123,7 +123,7 @@ jobs:
     runs-on: ubuntu-latest
     name: 'Comment on PR'
     steps:
-      - uses: actions/download-artifact@v6
+      - uses: actions/download-artifact@v7
         with:
           path: outputs
 
@@ -179,7 +179,7 @@ jobs:
     runs-on: ubuntu-latest
     name: 'Dispatch release event'
     steps:
-      - uses: actions/download-artifact@v6
+      - uses: actions/download-artifact@v7
         with:
           path: outputs
 
